@@ -7,12 +7,11 @@ Created on Mon Jan 11 14:31:20 2021
 
 import string
 import operator 
-import re
 import nltk
 from nltk import word_tokenize 
 
 source = open("podcast_1.txt", "r")
-print("\nCorpus Loaded")
+print("\nSource Mat Loaded")
 
 def TagMaker(word):
     text = word_tokenize(word)
@@ -21,11 +20,8 @@ def TagMaker(word):
 
 
 listed_sentences = []
-
 clean_tokens = []
-
 rec = {}
-
     
 terminal_punct = [".", "?", "!"]
 
@@ -37,14 +33,13 @@ for sentence in source:
     for word in sentence:
         line.append(word)
         for char in word:
-#            if char in string.punctuation:
-#                punct = char
-#                word = re.sub(r'[^\w\s]', '', word)
-                
             if char in terminal_punct:
                 listed_sentences.append(line)
                 line = []
                 
+source.close() # Close the sourcefile 
+
+## Process to clear the word of terminal punctuation (imperfect right now)               
 line_index = 0
 word_index = 0
              
@@ -60,7 +55,8 @@ for line in listed_sentences:
         
 print("\nSentences Configured")    
 
-    
+
+## Extract the end pairings  
 x = -1
 for line in listed_sentences:  
     if len(line) < 3:
@@ -74,14 +70,14 @@ for line in listed_sentences:
         rec[end_pair] += 1
 
 print("\nRecord Complete")    
-# Output the 15 word pairings with the highest counts
+## Output the 15 word pairings with the highest counts
 end_pairs =  dict(sorted(rec.items(), key=operator.itemgetter(1), reverse=True)[:15])
 print("\nMost Frequent End Pairings\n" + "-"*26)
 print(end_pairs)
 
-source.close()
-#
-## Construct a dictionary now of word-type pairings coupled with their frequencies
+
+
+## Construct a dictionary now of word-type pairings coupled with their count
 ## within the prevously constructed dictionary.
 codex = {}
 for i in rec.keys():
