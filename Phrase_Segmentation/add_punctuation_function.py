@@ -57,3 +57,14 @@ words = ("I am really sorry you had to spend time figuring this out "
         "notified so I can start investigating for you")
 
 print("\n" + PhraseMaker(words) + "\n")
+
+
+transcript_1 = ("Yeah, I think I largely do The uncomfortable thing for me "
+                "I think is when I'm afraid I'm gonna make the other person "
+                "feel uncomfortable Cause you know I bring up my dead mom, it's "
+                "like the air gets sucked out of the room So I, I mostly want to "
+                "be able to just talk about it and feel comfortable sharing this "
+                "truth about my life and not make everyone sad or scared "
+                "or uncomfortable")
+
+print("\n" + PhraseMaker(transcript_1) + "\n")
