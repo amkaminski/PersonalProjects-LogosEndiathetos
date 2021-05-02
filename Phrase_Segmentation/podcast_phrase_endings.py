@@ -69,7 +69,8 @@ for line in listed_sentences:
     else: 
         rec[end_pair] += 1
 
-print("\nRecord Complete")    
+print("\nRecord Complete")  
+  
 ## Output the 15 word pairings with the highest counts
 end_pairs =  dict(sorted(rec.items(), key=operator.itemgetter(1), reverse=True)[:15])
 print("\nMost Frequent End Pairings\n" + "-"*26)
